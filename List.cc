@@ -446,7 +446,7 @@ int List::sum()
 // current node, swap the value of the current node with the minimum.
 void List::selectionSort()
 {
-	ListIterator iter1, iter2;
+	ListIterator iter1, iter2, min;
 	int temp = 0;
 	iter1 = head;
 	iter2 = head->next;
@@ -459,18 +459,15 @@ void List::selectionSort()
 	{
 		while (iter2 != NULL) // Secondary control loop.
 		{
-			if (*iter1 < *iter2)
+			if (*iter1 > *iter2)
 			{
-				temp = *iter1;     //Swap code noticed function later. 
-				*iter1 = *iter2;
-				*iter2 = temp;
-			
+                min = iter2;
 			}
 			++iter2;
 		}
-
+        iter1.swap(min);
 		++iter1;
-		iter2 = head;
+        iter2 = iter1;
 	}
 
 }
